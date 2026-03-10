@@ -304,6 +304,7 @@ graph LR
 |------|-------------|
 | **One active application per listing** | A Tenant can only have **one active application** per Listing at any time. If an application already exists and is not in a final status (`accepted` or `rejected`), the "Send Application" button is disabled or hidden. |
 | **Re-application after rejection** | If the Owner **rejects** an application, the Tenant is allowed to send a **new application** to the same Listing. |
+| **Re-application after cancellation** | If the Tenant **cancels** their own application, they are allowed to send a **new application** to the same Listing. |
 | **No re-application after acceptance** | If the Owner **accepts** an application, the Tenant **cannot** send another application to the same Listing. |
 
 ### 6.2 Cancellation Rules
@@ -338,7 +339,10 @@ graph LR
 
 | Rule | Description |
 |------|-------------|
-| **Automatic deactivation** | When a Listing is deactivated, **all applications** tied to that Listing are **automatically deactivated**. Tenants and Owners can no longer interact with these applications. |
+| **Scope** | Only applications in **non-final** statuses (`sent`, `unread`, `read`) are affected. Applications already in `accepted` or `rejected` status **remain unchanged**. |
+| **Automatic cancellation** | When a Listing is deactivated, all affected applications are **automatically cancelled**. Tenants and Owners can no longer interact with these applications. |
+| **Tenant notification** | Tenants with cancelled applications receive a notification that the listing is no longer available. |
+| **Reactivation restores applications** | If the Owner **reactivates** the Listing, previously cancelled applications are **restored** to the status they held before deactivation. |
 
 ### 6.6 Verification Edge Cases
 
