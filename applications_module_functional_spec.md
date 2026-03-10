@@ -338,8 +338,7 @@ graph LR
 
 | Rule | Description |
 |------|-------------|
-| **Current behavior** | Not explicitly defined. If a Listing is deactivated, the behavior of existing applications tied to it is unspecified. |
-| **Recommendation** | See Open Questions §7 |
+| **Automatic deactivation** | When a Listing is deactivated, **all applications** tied to that Listing are **automatically deactivated**. Tenants and Owners can no longer interact with these applications. |
 
 ### 6.6 Verification Edge Cases
 
@@ -366,12 +365,11 @@ The following items require product/business decisions before final implementati
 
 | # | Question | Impact |
 |---|----------|--------|
-| 1 | **What happens to existing applications when a Listing is deactivated/deleted?** Are they archived? Do Tenants receive a notification? Can the Owner still see them? | Data lifecycle, notification system |
-| 2 | **Should the CRM stage and List View status be linked?** For example, should moving a CRM stage to "Rejected" also set the List View status to "Rejected"? | Data consistency, UX expectations |
-| 3 | **Can an Owner undo a Reject decision?** The current spec makes Rejected final. Should there be an appeal or reopen mechanism? | Status model, Tenant experience |
-| 4 | **What happens after Accept?** Does accepting an application trigger a contract creation flow, a message to the tenant, or another module's action? | Cross-module integration |
-| 5 | **Is there a notification system?** How are Tenants notified when their application status changes (push, email, in-app)? | Notification infrastructure |
-| 6 | **What is the difference between Tenant "Sent" and "Unread" statuses?** Both represent pre-Owner-engagement states. Is "Sent" purely a frontend state before delivery, or does it persist in the backend? | API design, status model |
-| 7 | **Can Owners archive old applications?** Is there a retention period or cleanup logic for applications in final statuses? | Data management, UI performance |
-| 8 | **Is the CRM stage "Rejected" the same as the List View "Rejected"?** They use the same word but are independent fields. Should rejecting in CRM also reject in List View? | Consistency, business logic |
+| 1 | **Should the CRM stage and List View status be linked?** For example, should moving a CRM stage to "Rejected" also set the List View status to "Rejected"? | Data consistency, UX expectations |
+| 2 | **Can an Owner undo a Reject decision?** The current spec makes Rejected final. Should there be an appeal or reopen mechanism? | Status model, Tenant experience |
+| 3 | **What happens after Accept?** Does accepting an application trigger a contract creation flow, a message to the tenant, or another module's action? | Cross-module integration |
+| 4 | **Is there a notification system?** How are Tenants notified when their application status changes (push, email, in-app)? | Notification infrastructure |
+| 5 | **What is the difference between Tenant "Sent" and "Unread" statuses?** Both represent pre-Owner-engagement states. Is "Sent" purely a frontend state before delivery, or does it persist in the backend? | API design, status model |
+| 6 | **Can Owners archive old applications?** Is there a retention period or cleanup logic for applications in final statuses? | Data management, UI performance |
+| 7 | **Is the CRM stage "Rejected" the same as the List View "Rejected"?** They use the same word but are independent fields. Should rejecting in CRM also reject in List View? | Consistency, business logic |
 
