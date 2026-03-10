@@ -266,17 +266,7 @@ Available in the side panel when clicking a CRM card:
 | **Available to** | Owner only |
 | **Filtering** | By stage (with sub-filters for viewing status: Upcoming / Done), by listing |
 
-### 5.3 Analytics View (Аналитика)
-
-| Property | Details |
-|----------|---------|
-| **Purpose** | Data-driven insights on application pipeline performance |
-| **Content** | Monthly application chart, conversion funnel, bottleneck analysis, rejection reasons, AI recommendations |
-| **Data Source** | Aggregated from all applications / CRM stages |
-| **Available to** | Owner only |
-| **Filtering** | By listing |
-
-### 5.4 How List View and CRM View Relate
+### 5.3 How List View and CRM View Relate
 
 ```mermaid
 graph LR
@@ -295,7 +285,7 @@ graph LR
 > 
 > Changing a status in List View **does not** automatically change the CRM stage, and vice versa. They are independent dimensions of the same application.
 
-### 5.5 Tenant View
+### 5.4 Tenant View
 
 | Property | Details |
 |----------|---------|
