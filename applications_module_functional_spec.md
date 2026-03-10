@@ -172,7 +172,7 @@ The CRM View uses a **5-stage pipeline** independent of the List View statuses:
 |----------|---------|
 | **Who** | Tenant (not yet verified) |
 | **Trigger** | Automatic — system launches verification after first application submission |
-| **Methods** | **OneID** (OAuth 2.0 redirect to id.egov.uz) or **E-imzo** (in-page digital signature plugin) |
+| **Methods** | **OneID** (redirect to id.egov.uz) or **E-imzo** (in-page digital signature plugin) |
 | **On Success** | Verified status saved to tenant profile permanently; application automatically sent to Owner |
 | **On Failure/Cancel** | Application is **not** created in the system; tenant returns to the listing page |
 | **Business Rule** | Verification is **one-time** — once verified, all future applications skip this step |
