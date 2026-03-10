@@ -302,8 +302,9 @@ graph LR
 
 | Rule | Description |
 |------|-------------|
-| **Current behavior** | No explicit deduplication logic is defined in the existing spec. A Tenant can potentially send multiple applications to the same Listing. |
-| **Recommendation** | See Open Questions §7 |
+| **One active application per listing** | A Tenant can only have **one active application** per Listing at any time. If an application already exists and is not in a final status (`accepted` or `rejected`), the "Send Application" button is disabled or hidden. |
+| **Re-application after rejection** | If the Owner **rejects** an application, the Tenant is allowed to send a **new application** to the same Listing. |
+| **No re-application after acceptance** | If the Owner **accepts** an application, the Tenant **cannot** send another application to the same Listing. |
 
 ### 6.2 Cancellation Rules
 
@@ -365,13 +366,12 @@ The following items require product/business decisions before final implementati
 
 | # | Question | Impact |
 |---|----------|--------|
-| 1 | **Can a Tenant send multiple applications for the same Listing?** If yes, is there a limit? If no, how is the duplicate detected and communicated? | Duplicate prevention logic, UI error messages |
-| 2 | **What happens to existing applications when a Listing is deactivated/deleted?** Are they archived? Do Tenants receive a notification? Can the Owner still see them? | Data lifecycle, notification system |
-| 3 | **Should the CRM stage and List View status be linked?** For example, should moving a CRM stage to "Rejected" also set the List View status to "Rejected"? | Data consistency, UX expectations |
-| 4 | **Can an Owner undo a Reject decision?** The current spec makes Rejected final. Should there be an appeal or reopen mechanism? | Status model, Tenant experience |
-| 5 | **What happens after Accept?** Does accepting an application trigger a contract creation flow, a message to the tenant, or another module's action? | Cross-module integration |
-| 6 | **Is there a notification system?** How are Tenants notified when their application status changes (push, email, in-app)? | Notification infrastructure |
-| 7 | **What is the difference between Tenant "Sent" and "Unread" statuses?** Both represent pre-Owner-engagement states. Is "Sent" purely a frontend state before delivery, or does it persist in the backend? | API design, status model |
-| 8 | **Can Owners archive old applications?** Is there a retention period or cleanup logic for applications in final statuses? | Data management, UI performance |
-| 9 | **Is the CRM stage "Rejected" the same as the List View "Rejected"?** They use the same word but are independent fields. Should rejecting in CRM also reject in List View? | Consistency, business logic |
-| 10 | **Should the Analytics view be accessible to Tenants?** Currently it's Owner-only. | Feature scope |
+| 1 | **What happens to existing applications when a Listing is deactivated/deleted?** Are they archived? Do Tenants receive a notification? Can the Owner still see them? | Data lifecycle, notification system |
+| 2 | **Should the CRM stage and List View status be linked?** For example, should moving a CRM stage to "Rejected" also set the List View status to "Rejected"? | Data consistency, UX expectations |
+| 3 | **Can an Owner undo a Reject decision?** The current spec makes Rejected final. Should there be an appeal or reopen mechanism? | Status model, Tenant experience |
+| 4 | **What happens after Accept?** Does accepting an application trigger a contract creation flow, a message to the tenant, or another module's action? | Cross-module integration |
+| 5 | **Is there a notification system?** How are Tenants notified when their application status changes (push, email, in-app)? | Notification infrastructure |
+| 6 | **What is the difference between Tenant "Sent" and "Unread" statuses?** Both represent pre-Owner-engagement states. Is "Sent" purely a frontend state before delivery, or does it persist in the backend? | API design, status model |
+| 7 | **Can Owners archive old applications?** Is there a retention period or cleanup logic for applications in final statuses? | Data management, UI performance |
+| 8 | **Is the CRM stage "Rejected" the same as the List View "Rejected"?** They use the same word but are independent fields. Should rejecting in CRM also reject in List View? | Consistency, business logic |
+
