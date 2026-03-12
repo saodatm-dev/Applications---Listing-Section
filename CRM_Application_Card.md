@@ -114,19 +114,22 @@ Read-only summary with three sections:
 
 ### ОБЪЕКТ (Listing)
 
-| Element | Data |
-|---------|------|
-| **Thumbnail** | Property image |
-| **Listing Name** | Property name, bold |
-| **Submission Time** | "Заявка: {relative time}" |
+Displays the property associated with this application:
 
-### ИНФОРМАЦИЯ (Metadata)
+- **Thumbnail** — property image
+- **Listing Name** — property name
+- **Submission Time** — "Заявка: {relative time}" (e.g., "Заявка: 2 часа назад")
 
-| Тип | Стадия |
-|-----|--------|
-| Entity type | Current CRM stage |
-| **Просмотры** | **Заметки** |
-| Viewing count | Note count |
+### ИНФОРМАЦИЯ (Application Info)
+
+Four info cards showing key details about the application:
+
+| Label | Value |
+|-------|-------|
+| **Тип** | Entity type — "Физическое лицо" or "Юридическое лицо" |
+| **Стадия** | Current CRM stage (e.g., "Новая заявка") |
+| **Просмотры** | Total number of viewings |
+| **Заметки** | Total number of notes |
 
 ### ИСТОРИЯ (History Timeline)
 
