@@ -139,7 +139,7 @@ A vertical timeline showing events in **reverse chronological order** (newest fi
 - `"Просмотр назначен на {DD.MM} в {HH:MM}"` — on viewing scheduled
 
 > [!NOTE]
-> History is **append-only** — entries are never edited or removed. Timestamp format: `"Сегодня, HH:MM"`.
+> History entries can only be added — they are never edited or removed. Timestamp format: `"Сегодня, HH:MM"`.
 
 ---
 
