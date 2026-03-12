@@ -56,11 +56,11 @@ The **CRM Application Card** is the primary workspace for managing individual re
 
 | Stage | Key | Meaning | Column Color |
 |-------|-----|---------|-------------|
-| **New Application** (Новая заявка) | `new` | Just arrived, initial triage | `#F2994A` (orange) |
-| **Initial Contact** (Первичный контакт) | `contact` | Owner has reached out to the tenant | `#2F80ED` (blue) |
-| **Viewings** (Просмотры) | `viewing` | Property viewing scheduled or completed | `#9B59B6` (purple) |
-| **Contract Closing** (Заключение контракта) | `contract` | Negotiation / signing of tenant agreement | `#27AE60` (green) |
-| **Rejected** (Отказ) | `rejected` | Deal fell through at any stage | `#E74C3C` (red) |
+| **New Application** (Новая заявка) | `new` | Just arrived, initial triage | Orange |
+| **Initial Contact** (Первичный контакт) | `contact` | Owner has reached out to the tenant | Blue |
+| **Viewings** (Просмотры) | `viewing` | Property viewing scheduled or completed | Purple |
+| **Contract Closing** (Заключение контракта) | `contract` | Negotiation / signing of tenant agreement | Green |
+| **Rejected** (Отказ) | `rejected` | Deal fell through at any stage | Red |
 
 > [!NOTE]
 > CRM stages have **no hard transition restrictions** — any stage can be moved to any other stage via drag-and-drop or the stage dropdown in the Detail Panel. This is a deliberate design choice to give Owners maximum flexibility in pipeline management.
@@ -105,24 +105,24 @@ The CRM Pipeline is a **horizontal Kanban board** with 5 columns, one for each C
 
 | Component | Description |
 |-----------|-------------|
-| **Board Container** | `display: flex; gap: 14px; overflow-x: auto` — horizontal layout with scrolling |
-| **Column** | `min-width: 220px; max-width: 280px` — fixed range, rounded corners (14px), gray background (`#f5f5f5`) |
+| **Board Container** | Horizontal layout with scrolling |
+| **Column** | Fixed width range, rounded corners, gray background |
 | **Column Header** | Colored dot + stage title + card count badge |
-| **Column Body** | Scrollable card list (`overflow-y: auto`), `min-height: 80px` |
+| **Column Body** | Scrollable card list |
 
 ### 4.2 Column Header
 
 | Element | Description |
 |---------|-------------|
-| **Stage Dot** | 9×9px colored circle matching the stage color |
-| **Title** | Stage label, 13px, font-weight 600 |
-| **Count Badge** | Card count in a pill badge (white bg, gray border, 11px bold) |
+| **Stage Dot** | Small colored circle matching the stage color |
+| **Title** | Stage label, bold |
+| **Count Badge** | Card count in a pill badge |
 
 ### 4.3 Column Drag-and-Drop
 
 | Event | Behavior |
 |-------|----------|
-| **Drag over column** | Column body gets a light orange highlight background (`rgba(239,90,40,0.05)`) |
+| **Drag over column** | Column body gets a light orange highlight background |
 | **Drag leave** | Highlight removed (only if cursor leaves the column body entirely) |
 | **Drop** | Stage updated on the deal; history entry logged; entire board re-renders |
 
@@ -150,16 +150,16 @@ When the CRM tab is active, the page-level filter dropdowns change behavior:
 
 Each Pipeline Card displays the following data in a compact layout:
 
-| Element | Position | Data Displayed | Styling |
-|---------|----------|---------------|---------|
-| **Avatar** | Top-left | Tenant's initials (2 characters) | 32×32px circle, colored background per tenant |
-| **Name** | Top, next to avatar | Full tenant name + verification badge (if verified) | 12px, font-weight 600 |
-| **Entity Type** | Below name | "Физ. лицо" or "Юр. лицо" (abbreviated) | 10px, gray (`var(--gray-500)`) |
-| **Listing Thumbnail** | Middle row | Property photo | 34×26px, rounded corners (4px) |
-| **Listing Name** | Next to thumbnail | Property name (e.g., "Кв. 4Б, Здание 1") | 11px, font-weight 500, gray (`var(--gray-700)`) |
-| **Viewing Badge** | Below listing (conditional) | "Предстоит" / "Проведен" | Colored badge: blue for upcoming, green for done |
-| **Timestamp** | Bottom-left | Relative time (e.g., "2 часа назад") | 10px, light gray (`var(--gray-400)`) |
-| **Message Indicator** | Bottom-right (conditional) | Chat icon + count "1" | 10px, brand color (`#EF5A28`), font-weight 600 |
+| Element | Position | Data Displayed |
+|---------|----------|---------------|
+| **Avatar** | Top-left | Tenant's initials (2 characters), circular colored background |
+| **Name** | Top, next to avatar | Full tenant name + verification badge (if verified) |
+| **Entity Type** | Below name | "Физ. лицо" or "Юр. лицо" (abbreviated) |
+| **Listing Thumbnail** | Middle row | Property photo thumbnail |
+| **Listing Name** | Next to thumbnail | Property name (e.g., "Кв. 4Б, Здание 1") |
+| **Viewing Badge** | Below listing (conditional) | "Предстоит" / "Проведен" — blue for upcoming, green for done |
+| **Timestamp** | Bottom-left | Relative time (e.g., "2 часа назад") |
+| **Message Indicator** | Bottom-right (conditional) | Chat icon + count |
 
 ### 5.2 Viewing Badge Logic
 
@@ -170,12 +170,12 @@ The Viewing Badge is **only shown** when:
 
 | Condition | Badge | Color |
 |-----------|-------|-------|
-| Any viewing has `status: "upcoming"` | **Предстоит** | Blue (`#e3f2fd` bg, `#2F80ED` text) |
-| All viewings have `status: "done"` | **Проведен** | Green (`#e8f5e9` bg, `#27AE60` text) |
+| Any viewing has `status: "upcoming"` | **Предстоит** | Blue |
+| All viewings have `status: "done"` | **Проведен** | Green |
 
 ### 5.3 Verification Badge
 
-A small blue checkmark SVG icon (`fill: #2F80ED`) appears next to the tenant's name if `verified: true`. This indicates the tenant has completed identity verification via OneID or E-imzo.
+A small blue checkmark icon appears next to the tenant's name if `verified: true`. This indicates the tenant has completed identity verification via OneID or E-imzo.
 
 ### 5.4 Message Indicator
 
@@ -187,9 +187,9 @@ A chat bubble SVG icon with a count appears in the bottom-right corner of the ca
 |-------------|----------|
 | **Click** | Opens the Detail Panel for this application |
 | **Drag** | Initiates drag-and-drop to move card to another CRM stage column |
-| **Hover** | Border changes to brand color (`#EF5A28`); subtle shadow (`var(--shadow)`); upward translate (`-1px`) |
-| **Dragging (active)** | Card becomes semi-transparent (40% opacity) and slightly scaled down (97%) |
-| **Drag end** | Opacity and scale restored; all `drag-over` highlights are cleared |
+| **Hover** | Border changes to brand color; subtle shadow; slight upward shift |
+| **Dragging (active)** | Card becomes semi-transparent and slightly scaled down |
+| **Drag end** | Opacity and scale restored; all drag-over highlights are cleared |
 
 ---
 
@@ -197,16 +197,16 @@ A chat bubble SVG icon with a count appears in the bottom-right corner of the ca
 
 ### 6.1 Panel Structure
 
-The Detail Panel is a **fixed-position side panel** (520px wide) that slides in from the right edge of the screen. It overlays the content area with a semi-transparent backdrop (`rgba(0,0,0,0.3)`).
+The Detail Panel is a **fixed-position side panel** that slides in from the right edge of the screen. It overlays the content area with a semi-transparent backdrop.
 
-**Animation**: slides in from `right: -520px` to `right: 0` with `300ms cubic-bezier(0.4, 0, 0.2, 1)` easing.
+**Animation**: slides in from the right with smooth easing.
 
 | Component | Description |
 |-----------|-------------|
-| **Close Button** | Top-right `×` button (32×32px circle, gray bg, z-index 2) |
+| **Close Button** | Top-right `×` button |
 | **Header** | Tenant avatar + name + entity type + Stage dropdown |
 | **Tab Bar** | 4 tabs: Обзор (Overview), ~~Сообщения (Messages)~~, Заметки (Notes), Просмотры (Viewings) |
-| **Body** | Scrollable content area (`flex: 1; overflow-y: auto; padding: 20px 28px`) that renders the active tab's content |
+| **Body** | Scrollable content area that renders the active tab's content |
 
 > [!NOTE]
 > The **Сообщения (Messages)** tab is present in the tab bar but is **excluded from this specification**. It is documented separately.
@@ -215,10 +215,10 @@ The Detail Panel is a **fixed-position side panel** (520px wide) that slides in 
 
 | Element | Description |
 |---------|-------------|
-| **Avatar** | 48×48px circle with tenant initials, colored background matching the tenant's color scheme |
-| **Name** | Full tenant name, 18px, font-weight 700 |
-| **Entity Type** | "Физическое лицо" or "Юридическое лицо" (full form, not abbreviated), 13px, gray |
-| **Stage Row** | Label "Стадия:" (12px, gray, font-weight 500) + `<select>` dropdown (rounded, 12px, font-weight 600) with all 5 stages; current stage is pre-selected |
+| **Avatar** | Circle with tenant initials, colored background matching the tenant's color scheme |
+| **Name** | Full tenant name, bold |
+| **Entity Type** | "Физическое лицо" or "Юридическое лицо" (full form, not abbreviated), gray |
+| **Stage Row** | Label "Стадия:" + dropdown with all 5 stages; current stage is pre-selected |
 
 ### 6.3 Tab Bar
 
@@ -229,7 +229,7 @@ The Detail Panel is a **fixed-position side panel** (520px wide) that slides in 
 | Notes | Заметки | 3rd |
 | Viewings | Просмотры | 4th (rightmost) |
 
-**Tab styling**: 13px, font-weight 500, gray text. Active tab: brand color (`#EF5A28`), font-weight 600, orange bottom border (2px).
+**Tab styling**: Gray text. Active tab: brand color, bold, orange bottom border.
 
 ### 6.4 Stage Dropdown Behavior
 
@@ -238,7 +238,7 @@ The Detail Panel is a **fixed-position side panel** (520px wide) that slides in 
 - **On change**: triggers `changeStageFromPanel()` which:
   1. Records the old stage label
   2. Updates the `stage` field on the deal
-  3. Creates a history entry with format: `"Стадия: {old label} -> {new label}"` colored with the destination stage color
+  3. Creates a history entry with format: `"Стадия: {old label} -> {new label}"`
   4. Re-renders the Pipeline board (card moves to new column)
   5. Re-renders the Detail Panel body
 - No restrictions — any stage can be selected from any other stage.
@@ -257,20 +257,20 @@ The Overview tab provides a read-only summary of the application, divided into t
 
 | Element | Data |
 |---------|------|
-| **Section Title** | "ОБЪЕКТ" (11px, uppercase, gray, letter-spacing 0.5px) |
-| **Thumbnail** | 64×48px property image, rounded corners (8px) |
-| **Listing Name** | Property name (14px, font-weight 600) |
-| **Submission Time** | "Заявка: {relative time}" (12px, gray) — e.g., "Заявка: 2 часа назад" |
+| **Section Title** | "ОБЪЕКТ" (uppercase, gray) |
+| **Thumbnail** | Property image, rounded corners |
+| **Listing Name** | Property name, bold |
+| **Submission Time** | "Заявка: {relative time}" — e.g., "Заявка: 2 часа назад" |
 
 ### 7.2 Metadata Grid (ИНФОРМАЦИЯ)
 
 | Element | Data |
 |---------|------|
-| **Section Title** | "ИНФОРМАЦИЯ" (11px, uppercase, gray, letter-spacing 0.5px) |
+| **Section Title** | "ИНФОРМАЦИЯ" (uppercase, gray) |
 
-A **2×2 grid** (`grid-template-columns: 1fr 1fr; gap: 12px`) of key metrics, each in a card with gray background (`var(--gray-100)`), border-radius 10px:
+A **2×2 grid** of key metrics, each in a card with gray background:
 
-| Cell | Label (11px, gray) | Value (14px, bold) |
+| Cell | Label | Value |
 |------|-----|-------|
 | Top-left | Тип | Entity type (Физическое лицо / Юридическое лицо) |
 | Top-right | Стадия | Current CRM stage label (e.g., "Новая заявка") |
@@ -281,23 +281,23 @@ A **2×2 grid** (`grid-template-columns: 1fr 1fr; gap: 12px`) of key metrics, ea
 
 | Element | Data |
 |---------|------|
-| **Section Title** | "ИСТОРИЯ" (11px, uppercase, gray, letter-spacing 0.5px) |
+| **Section Title** | "ИСТОРИЯ" (uppercase, gray) |
 
 A vertical timeline showing all significant events in **reverse chronological order** (newest first):
 
 | Element | Description |
 |---------|-------------|
-| **Timeline Line** | 2px vertical line, gray (`var(--gray-200)`), positioned left of entries |
-| **Dot** | 12×12px colored circle, color corresponds to the related stage; 2px white border |
-| **Timestamp** | 10px, light gray (`var(--gray-400)`), above the event text |
-| **Event Text** | 13px, gray (`var(--gray-700)`), line-height 1.4, with bold highlights for stage names |
+| **Timeline Line** | Vertical line, gray, positioned left of entries |
+| **Dot** | Small colored circle, color corresponds to the related stage |
+| **Timestamp** | Light gray, above the event text |
+| **Event Text** | Gray, with bold highlights for stage names |
 
 **Events logged in history:**
 
-- Stage creation: `"Новая заявка создана"` (orange dot `#F2994A`)
+- Stage creation: `"Новая заявка создана"` (orange dot)
 - Stage transitions: `"Стадия: {old} -> {new}"` (colored by destination stage)
-- Note additions: `"Добавлена заметка"` (blue dot `#2F80ED`)
-- Viewing scheduling: `"Просмотр назначен на {DD.MM} в {HH:MM}"` (blue dot `#2F80ED`)
+- Note additions: `"Добавлена заметка"` (blue dot)
+- Viewing scheduling: `"Просмотр назначен на {DD.MM} в {HH:MM}"` (blue dot)
 
 ---
 
@@ -315,15 +315,15 @@ The Notes tab is organized top-to-bottom in the following order:
 
 ### 8.2 Note Card
 
-Each note is displayed as a card with gray background (`var(--gray-100)`), border-radius 10px, padding 14px:
+Each note is displayed as a card with gray background:
 
 | Element | Description |
 |---------|-------------|
-| **Header Row** | Timestamp (left) + Action buttons (right), flex layout with `justify-content: space-between` |
-| **Timestamp** | 10px, light gray (e.g., "Сегодня, 14:30") |
-| **Edit Button** | Pencil SVG icon (13×13px); hover: gray background. Moves note text to the input field for editing, removes original |
-| **Delete Button** | Trash SVG icon (13×13px); hover: red background (`#feecec`), red icon color. Removes the note immediately |
-| **Note Text** | 13px, gray (`var(--gray-700)`), line-height 1.5 |
+| **Header Row** | Timestamp (left) + Action buttons (right) |
+| **Timestamp** | Light gray (e.g., "Сегодня, 14:30") |
+| **Edit Button** | Pencil icon; moves note text to the input field for editing, removes original |
+| **Delete Button** | Trash icon; hover highlights red. Removes the note immediately |
+| **Note Text** | Gray text |
 
 ### 8.3 Note Actions
 
@@ -340,18 +340,18 @@ Each note is displayed as a card with gray background (`var(--gray-100)`), borde
 
 | Element | Description |
 |---------|-------------|
-| **Textarea** | Full-width, border `1px solid var(--gray-200)`, border-radius 10px, 13px font, min-height 70px, resizable vertically |
+| **Textarea** | Full-width, resizable vertically |
 | **Placeholder (default)** | "Добавить заметку..." |
 | **Placeholder (rejected stage)** | "Причина отказа..." |
-| **Add Button** | Full-width, dark background (`var(--dark)`), white text, "Добавить", border-radius 8px, 13px font-weight 600 |
+| **Add Button** | Full-width, dark background, white text, "Добавить" |
 
 ### 8.5 Suggested Note Chips
 
 Suggested Note Chips are **stage-aware pre-written templates** that appear between the textarea and the Add button. Clicking a chip instantly saves it as a new note with a current timestamp and creates a history entry.
 
-**Section label**: "Рекомендации" (10px, uppercase, gray, letter-spacing 0.4px)
+**Section label**: "Рекомендации" (uppercase, gray)
 
-**Chip styling**: Inline pill buttons (11px, `#5a6f85` text, `#f0f4f8` bg, `#dce3eb` border, rounded 14px). Hover: brand color text and border, brand-light bg. Click: slight scale-down (97%).
+**Chip styling**: Inline pill buttons. Hover: brand color highlight. Click: slight scale-down.
 
 | CRM Stage | Suggested Templates |
 |-----------|-------------------|
@@ -367,10 +367,10 @@ When the deal is in the **Rejected** (`rejected`) stage, a special dropdown appe
 
 | Property | Details |
 |----------|---------|
-| **Label** | "Этап отказа" (11px, uppercase, font-weight 600, gray, letter-spacing 0.4px) |
-| **Dropdown Styling** | Full-width, padding 8px 12px, border-radius 8px, 13px font, custom chevron, white background |
+| **Label** | "Этап отказа" (uppercase, bold, gray) |
+| **Dropdown** | Full-width, white background |
 | **Options** | Первичный контакт · Просмотры · Заключение контракта |
-| **Default** | Placeholder "Выберите этап" (disabled, hidden) |
+| **Default** | Placeholder "Выберите этап" |
 | **Purpose** | Records at which pipeline stage the rejection occurred, enabling analytics on bottlenecks |
 | **Visibility** | Only visible when `stage === 'rejected'` |
 
@@ -380,35 +380,35 @@ When the deal is in the **Rejected** (`rejected`) stage, a special dropdown appe
 
 ### 9.1 Schedule Viewing Form
 
-A compact form at the top of the Viewings tab with gray background (`var(--gray-100)`), border-radius 10px, padding 14px:
+A compact form at the top of the Viewings tab with gray background:
 
 | Element | Description |
 |---------|-------------|
-| **Form Title** | "Назначить просмотр" (13px, font-weight 600) |
-| **Date + Time Row** | Two inputs side-by-side (`display: flex; gap: 10px`) |
-| **Date Input** | `<input type="date">` — 8px padding, border-radius 8px, white bg |
-| **Time Input** | `<input type="time">` — 8px padding, border-radius 8px, white bg |
-| **Address Input** | `<input type="text">` — full-width, placeholder "Адрес", pre-populated with the listing name; editable |
-| **Submit Button** | "Назначить" — aligned right, dark background (`var(--dark)`), white text, border-radius 8px, 13px font-weight 600 |
+| **Form Title** | "Назначить просмотр" (bold) |
+| **Date + Time Row** | Two inputs side-by-side |
+| **Date Input** | Date picker |
+| **Time Input** | Time picker |
+| **Address Input** | Text input, placeholder "Адрес", pre-populated with the listing name; editable |
+| **Submit Button** | "Назначить" — aligned right, dark background, white text |
 
 **Validation:** All three fields (date, time, address) must be non-empty. If any field is empty, the form does nothing on submit.
 
 **On submit:**
 
 1. A viewing record is created with `status: "upcoming"`.
-2. A history entry is logged: `"Просмотр назначен на {DD.MM} в {HH:MM}"` (blue dot `#2F80ED`).
+2. A history entry is logged: `"Просмотр назначен на {DD.MM} в {HH:MM}"` (blue dot).
 3. Both the Detail Panel body and the Pipeline board re-render (to update viewing badges on cards).
 
 ### 9.2 Viewing Card
 
-Each viewing is displayed as a horizontal card with gray background (`var(--gray-100)`), border-radius 10px, padding 14px:
+Each viewing is displayed as a horizontal card with gray background:
 
 | Element | Description |
 |---------|-------------|
-| **Date Box** | 48×48px white box with border (`1px solid var(--gray-200)`), border-radius 10px. Day number (16px, font-weight 700, dark) and abbreviated month (9px, uppercase, font-weight 600, gray) |
-| **Time** | Viewing time, 13px, font-weight 600, dark |
-| **Address** | Full address, 12px, gray (`var(--gray-500)`), margin-top 2px |
-| **Status Badge** | Rounded pill (11px, font-weight 600, border-radius 12px): "Предстоит" (blue) or "Проведен" (green) |
+| **Date Box** | White box with border. Day number (bold) and abbreviated month |
+| **Time** | Viewing time, bold |
+| **Address** | Full address, gray |
+| **Status Badge** | Rounded pill: "Предстоит" (blue) or "Проведен" (green) |
 
 **Month abbreviations used:** Янв, Фев, Мар, Апр, Май, Июн, Июл, Авг, Сен, Окт, Ноя, Дек
 
@@ -416,12 +416,12 @@ Each viewing is displayed as a horizontal card with gray background (`var(--gray
 
 | Status | Key | Badge Color | Meaning |
 |--------|-----|------------|---------|
-| **Upcoming** (Предстоит) | `upcoming` | Blue (`#e3f2fd` bg, `#2F80ED` text) | Viewing is scheduled but has not yet occurred |
-| **Done** (Проведен) | `done` | Green (`#e8f5e9` bg, `#27AE60` text) | Viewing has been completed |
+| **Upcoming** (Предстоит) | `upcoming` | Blue | Viewing is scheduled but has not yet occurred |
+| **Done** (Проведен) | `done` | Green | Viewing has been completed |
 
 ### 9.4 Empty State
 
-When there are no viewings: centered message **"Нет просмотров"** (13px, gray, 20px padding).
+When there are no viewings: centered message **"Нет просмотров"** (gray).
 
 ---
 
@@ -459,7 +459,7 @@ Each application in the CRM pipeline contains the following data fields:
 |----------|---------|
 | **Who** | Owner |
 | **Where** | Click any Pipeline Card in the CRM Kanban board |
-| **Process** | 1. Active tab resets to "Обзор" (Overview)<br>2. Avatar populated with tenant initials, bg color, and text color<br>3. Name and entity type displayed<br>4. Stage dropdown populated with all 5 stages, current stage pre-selected<br>5. Overlay backdrop fades in (`opacity: 0 → 1`)<br>6. Panel slides in from right (`right: -520px → 0`, 300ms cubic-bezier) |
+| **Process** | 1. Active tab resets to "Обзор" (Overview)<br>2. Avatar populated with tenant initials and colors<br>3. Name and entity type displayed<br>4. Stage dropdown populated with all 5 stages, current stage pre-selected<br>5. Overlay backdrop fades in<br>6. Panel slides in from right |
 | **Close** | Click `×` button, or click the overlay backdrop |
 
 ### 11.2 Change CRM Stage (Dropdown)
@@ -468,7 +468,7 @@ Each application in the CRM pipeline contains the following data fields:
 |----------|---------|
 | **Who** | Owner |
 | **Where** | Stage dropdown in Detail Panel header |
-| **Process** | 1. Owner selects a new stage<br>2. Old stage label recorded<br>3. `stage` field updated on the deal<br>4. History entry created: `"Стадия: {old} -> {new}"` with destination stage color<br>5. Pipeline board re-renders (card moves to new column)<br>6. Detail Panel body re-renders with updated data |
+| **Process** | 1. Owner selects a new stage<br>2. Old stage label recorded<br>3. `stage` field updated on the deal<br>4. History entry created: `"Стадия: {old} -> {new}"`<br>5. Pipeline board re-renders (card moves to new column)<br>6. Detail Panel body re-renders with updated data |
 | **Restrictions** | None — any stage-to-stage transition is allowed |
 
 ### 11.3 Change CRM Stage (Drag-and-Drop)
@@ -477,7 +477,7 @@ Each application in the CRM pipeline contains the following data fields:
 |----------|---------|
 | **Who** | Owner |
 | **Where** | CRM Kanban board — drag card between columns |
-| **Process** | 1. Owner drags a Pipeline Card (card becomes 40% opacity, 97% scale)<br>2. Target column body highlights with orange tint (`rgba(239,90,40,0.05)`)<br>3. On drop: old stage label recorded, stage updated, history entry created, board re-renders<br>4. If the Detail Panel is open for the dragged card, its body also re-renders<br>5. All drag-over highlights are cleared |
+| **Process** | 1. Owner drags a Pipeline Card (card becomes semi-transparent)<br>2. Target column body highlights with orange tint<br>3. On drop: old stage label recorded, stage updated, history entry created, board re-renders<br>4. If the Detail Panel is open for the dragged card, its body also re-renders<br>5. All drag-over highlights are cleared |
 | **Restrictions** | None — any stage-to-stage move is allowed |
 
 ### 11.4 Add Note
@@ -486,7 +486,7 @@ Each application in the CRM pipeline contains the following data fields:
 |----------|---------|
 | **Who** | Owner |
 | **Where** | Notes tab → textarea + "Добавить" button, or via Suggested Note Chip |
-| **Process (manual)** | 1. Owner types note text in textarea<br>2. Clicks "Добавить"<br>3. Note saved with current timestamp (format: "Сегодня, HH:MM")<br>4. History entry: "Добавлена заметка" (blue dot `#2F80ED`)<br>5. Notes tab re-renders showing new note at top |
+| **Process (manual)** | 1. Owner types note text in textarea<br>2. Clicks "Добавить"<br>3. Note saved with current timestamp (format: "Сегодня, HH:MM")<br>4. History entry: "Добавлена заметка" (blue dot)<br>5. Notes tab re-renders showing new note at top |
 | **Process (chip)** | 1. Owner clicks a Suggested Note Chip<br>2. Chip text saved as note immediately with current timestamp<br>3. Same history entry created<br>4. Notes tab re-renders |
 | **Validation** | Empty text is silently ignored (manual only) |
 
@@ -513,7 +513,7 @@ Each application in the CRM pipeline contains the following data fields:
 |----------|---------|
 | **Who** | Owner |
 | **Where** | Viewings tab → Schedule form |
-| **Process** | 1. Owner fills date, time, and address fields<br>2. Clicks "Назначить"<br>3. Viewing created with `status: "upcoming"`<br>4. History entry: `"Просмотр назначен на {DD.MM} в {HH:MM}"` (blue dot `#2F80ED`)<br>5. Both Detail Panel body and Pipeline board re-render (updates viewing badges) |
+| **Process** | 1. Owner fills date, time, and address fields<br>2. Clicks "Назначить"<br>3. Viewing created with `status: "upcoming"`<br>4. History entry: `"Просмотр назначен на {DD.MM} в {HH:MM}"` (blue dot)<br>5. Both Detail Panel body and Pipeline board re-render (updates viewing badges) |
 | **Validation** | All three fields required; silently ignored if any field is empty |
 
 ---
@@ -579,8 +579,8 @@ Each application in the CRM pipeline contains the following data fields:
 
 | Scenario | Behavior |
 |----------|----------|
-| No notes exist | Message: "Нет заметок" (centered, 13px, gray, 20px padding) |
-| No viewings exist | Message: "Нет просмотров" (centered, 13px, gray, 20px padding) |
+| No notes exist | Message: "Нет заметок" (centered, gray) |
+| No viewings exist | Message: "Нет просмотров" (centered, gray) |
 | No history entries | _(Unlikely — creation always logs an entry)_ Timeline section renders empty |
 
 ### 12.9 Panel Behavior
