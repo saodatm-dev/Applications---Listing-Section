@@ -76,8 +76,7 @@ The **CRM Application Card** is the primary workspace for managing individual re
 
 1. The `stage` field on the application record is updated.
 2. A history entry is created with a timestamp and the transition description (e.g., `"Стадия: Новая заявка -> Первичный контакт"`).
-3. The history entry receives the color of the **destination** stage.
-4. The Pipeline board and Detail Panel body re-render immediately.
+3. The Pipeline board and Detail Panel body re-render immediately.
 
 ### 3.3 CRM Stage vs. List View Status (Independence)
 
