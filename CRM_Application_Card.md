@@ -103,11 +103,8 @@ A **fixed-position side panel** that slides in from the right with a backdrop ov
 
 ### Tab Bar
 
-| Обзор (Overview) | ~~Сообщения~~ | Заметки (Notes) | Просмотры (Viewings) |
-|---|---|---|---|
-
-> [!NOTE]
-> The **Сообщения (Messages)** tab is present but **excluded from this spec** — documented separately.
+| Обзор (Overview) | Заметки (Notes) | Просмотры (Viewings) |
+|---|---|---|
 
 ---
 
