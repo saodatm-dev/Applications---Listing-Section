@@ -82,25 +82,20 @@ flowchart TD
     READ --> REJECTED["Rejected"]
 
     style START fill:#333,stroke:#333,color:#fff
-    style SENT fill:#e3f2fd,stroke:#2f80ed,color:#1a1a1a
-    style UNREAD fill:#fff8e1,stroke:#f2994a,color:#1a1a1a
-    style READ fill:#e8f5e9,stroke:#27ae60,color:#1a1a1a
-    style ACCEPTED fill:#f3e5f5,stroke:#8e24aa,color:#1a1a1a
-    style REJECTED fill:#feecec,stroke:#e74c3c,color:#1a1a1a
 ```
 
 ### 3.3 Owner-Side Unified Stage Pipeline (List View & CRM View)
 
 The Owner sees a **6-stage pipeline** used identically in both List View and CRM View:
 
-| Stage | Key | Label (RU) | Dot Color | Meaning | Final? |
-|-------|-----|------------|-----------|---------|--------|
-| **New Applications** | `new` | Новые заявки | `#F2994A` | Incoming, not yet processed | No |
-| **Initial Contact** | `contact` | Первичный контакт | `#2F80ED` | Owner has reached out to the tenant | No |
-| **Viewings** | `viewing` | Просмотры | `#9B59B6` | Property viewing scheduled or completed | No |
-| **Negotiation** | `negotiation` | Переговоры | `#17A2B8` | Active discussion of terms and conditions | No |
-| **Contract Closing** | `contract` | Заключение контракта | `#27AE60` | Negotiation / signing of tenant agreement | Yes |
-| **Rejected** | `rejected` | Отказ | `#E74C3C` | Deal fell through at any stage | Yes |
+| Stage | Key | Label (RU) | Meaning | Final? |
+|-------|-----|------------|---------|--------|
+| **New Applications** | `new` | Новые заявки | Incoming, not yet processed | No |
+| **Initial Contact** | `contact` | Первичный контакт | Owner has reached out to the tenant | No |
+| **Viewings** | `viewing` | Просмотры | Property viewing scheduled or completed | No |
+| **Negotiation** | `negotiation` | Переговоры | Active discussion of terms and conditions | No |
+| **Contract Closing** | `contract` | Заключение контракта | Negotiation / signing of tenant agreement | Yes |
+| **Rejected** | `rejected` | Отказ | Deal fell through at any stage | Yes |
 
 #### 3.3.1 Unified Transition Engine
 
